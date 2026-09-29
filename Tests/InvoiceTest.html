@@ -1,245 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice Notice</title>
+</head>
 
+<body style="margin:0;padding:0;background-color:#002b57;">
 
-<!-- Preheader (hidden inbox preview text) -->
-<div style="display:none; font-size:1px; color:#002b57; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">
-Invoice #((Document.InvoiceNbr)) attached — Important: our banking information has changed. Please update your records.
+<!-- Preheader -->
+<div style="display:none;font-size:1px;color:#002b57;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+Invoice #((Document.InvoiceNbr)) attached. Important: our banking information has changed. Please update your records.
 </div>
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#002b57;">
-<tbody><tr>
-<td align="center" style="padding:32px 12px;">
+<tr>
+<td align="center" style="padding:30px 15px;">
 
-  <!-- Main container -->
-  <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:100%; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:#ffffff;border-radius:8px;overflow:hidden;">
 
-    <!-- Header band: white, blue logo -->
-    <tbody><tr>
-    <td style="background-color:#ffffff; padding:28px 40px 24px 40px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-      <tbody><tr>
-      <td valign="middle">
-        <!-- PRODUCTION NOTE: replace the src below with your hosted logo URL
-             (e.g. https://www.extradutysolutions.com/images/eds-logo-blue.png).
-             Gmail and some clients strip embedded base64 images. -->
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAABkCAYAAAA8AQ3AAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEFFNkRCMzY3MjMxMTFFNUE1QkNCMDE5NUFBQjJDQTAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEFFNkRCMzc3MjMxMTFFNUE1QkNCMDE5NUFBQjJDQTAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0QUU2REIzNDcyMzExMUU1QTVCQ0IwMTk1QUFCMkNBMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0QUU2REIzNTcyMzExMUU1QTVCQ0IwMTk1QUFCMkNBMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PiSlKXoAAA/LSURBVHja7J1pjCNHFcefyQbEvZ5NAIEQigdCgBUCPASFQMQHT1AQp5BnV4CEOGQLJD4gCGMhCNcHbIQCH7ElPiCECGMIhJvYEBBEJGKcLLACgRiDBAkfCGvuABE71Eu/Wpdrqtt9VPv8/6SnOdzuo7rq3+9Vv6oqHB4eEgAALAMPQREAACBYAAAAwQIAQLAAAACCBQAAECwAAAQLAAAgWAAAkIljWXdQOHkapTjJjrIPKbtC2a+UfUDZF1AsYBU5PHsTPKwlpajsiyJOV8j/nq6M7+jN8jkAAII1d1iY7lD22pDPX6PsTtkOAADBmhvXilhdPmW7p8l216LIAIBgzZrHKrtR2beVHXd8/hnH/47L9jfK9wEAEKxcOaHsemW/UfZOZQXHNvfLZ/90fFaQz/j771F2CYoUAAiWzzLiTvSasq8ou0fZx6YIzbeUjZR9PWIb/n5L2R9kvzU5Du4JACEcQxFc4MnKrlJWUvZEMf6d+6YemXBfXfnJbwdPTdn2YcpeJUbilf1a2VDZvWIHyn4s4gYABGvN4byp94eEd1Hw7Ic/l5+a88q+Kb/zz7uUXWSFhCcjPCkWx+eK2cf6sLIP4nYBCNb68ixlN6T8bkG8njcqu8/x+T+UlY2/NyjojH92ymNxEuqesl/gtoF1BP0l41AsLS9TdkbZNVO2e5Fs9/KMx3slbhmAYK0vV3nYx5OU3absvSGf81vF71PQT5aVF+KWAQjW+vJ8j2W5HfIZJ4tetGDnCwAEa8ngN4CP97i/m43fLzV+/5LHYzyBgqx5ACBYa8Ypz/v7snhSH6EgHeGjyi6mIM/K53pqVVRdAMFaLx6j7O0e93enlOcPlL2PgjewDWU/pCBV4XaPx3qHnD8AEKw14ZMSXvniAWU/VXa19f8XKLvb87nzeX8C1RdAsNaDurI3ed4npy0cD/ns0fK5T94s1wEABGvFaeE6AFg+1jXT/S3KPqvs4Sm++zcKhtvw9Mc848Jvlf2Rgkz3+yQ0/Lux/aOUPZSCwc6XSDh3GQVv+nhCv+dRuv6o++U6AIBgrTicZsBDar5Gk+kHLv6s7LvKehR0qLNImW/8uEOdB0qfEBG62AoN/yIixvv5k7KfUTBkR8NDbp5KQaZ8hYJcrhNTzon3wxnvd6AKAwjWesBv9a5UdgsdHdv3bwrmZr9JxOoBKastZS9V9hwKxiBuxhC8MMFhz4wHTnNH/U8oGGP4aQrSIli4eHWPUw4v8KyyVyj7HaovgGCtF9zor5bw8NUUzGH1cWVt8YjYc3qrCMQ1lHyamTAuFbvS+B9PK3O7CCjnbX1H2bsomCfr3eJ1fVXZ6y0PDYC1oXB4mC2fcUWW+eKw7HXKvqHsrxQMUH6beFOuFxP/o/GcVSx694jAsXHf0r+MbR8hXhILDs/WwOMOLxO7POShwTeFp1L+lIStPJ3ydeL1nUe1BYvCrJf5wvQyY4H4nHhUt0nIZ8Kd6t9T9iMK+o1+qew/Ho7LnfHPpCBX68XKXiKCVhCBuk6OxSHi53GbAEJCYPI4Q6x+L6Eijw+8i/wOrdH8l4IpZ85IGFqQ4/NyYW9Q9hRlz5Dzuhe3B0CwgA13snM/1q1zCL9YFO8Wu0E8q+txSwCAYLk4IyKxCJwX0bwVtwWAAMyHBQCAYAEAAAQLALC2+OrD4n4fvTpMScwnPK/UwPi7SZOr0YRtl5QiBW/rivI374sHGI+MbTiRM48J9Hgtw04OxxmK6evpezznspxjN2O5x6HneX8j45yHNF5L0oV9L+x7lbUMm8bfA6nHs65v9nmEnU9iCidP29fQOjx7U6p6eCzjifBF7uUgUC4hMWlJ4dYclXo7ZeMpy/eLxg21xUqfSx4d8/0ZHYcbZ92DcJnlxZVxy1FWPsmjLKqWgNVDhMu+F33PdbuS4XNf9U0/nPes9laRv+spNaJttNMHyzitWGUKCdWJlKTC5i1WYU/HuuMpV5RzqiXcH2+/b9wofqLs5NwA54W+b+WM+zE9Ud7n7pKXS1Ea6zpPP92XB/7I0T56DschSh+KyvaNtsiCuK3EqpvlBLP0Ye1aF8AXy4OBCzlYmCLXHcqvw7q4otWU7bUQ7lD0PFOtGOfbcISq077TSnGcuLbpEPfdjPe+7Phfno09j3rlu1zyYFb1zfS0Nh1RSiWuaEnktW/Uka6IVeZugyyCZVfOHaOvZJZ0QryhtiFEYU/UnlFBB/J06dLqMZRKPIq4f2n7XMK8rmUpl7pVb8tLdg15RTCutsBlcxDlnUt/lRl5NZRQ7SjzEq1kEayi4yLnRTfClXU1Iv0EqFjfH6x4JfRxfaY3ummVeXHKQ2KRhcuuH+uOjjbCul0qDrFqGu3twe8rofI6K+4qpTVwY9xyNEo7/j7yBFjh/ipX/1UWzFCwbngotue9i/a+MtQdIedEX7H0Vx2JVrL2V/kWrP4Cxv7DEE9Jv9Fq208AWp950WuWYCUN3ytGKNg1woWuowx3aT4vY0A+tMj9lrAtXtWRaMVHf5WLLGkNXcstbMrTNQ9PJUl+1Ug8LbvjvWx4BwO5AcsSApZo3OeU9hW3/b0keURFKxSsOyq0mYun37htoa2vDB1pL3bHu+moNHyHgN4ES51YR6lrhSY7b/OK/dN0gtalce2GiO2yiFUzB++1k9CzND2muuOhpEVs36oLu4SVfVYJ/WLKlXuZu1hlCgklD6uy4AU8DPH4XEmni0jbo1jpbO5tSpYEWDHOoUXhb1FdGdFNQgf2qooWZfDYZy9YdDQPiyvyrPOwpp2f2V+VNO1hEcLAmsOLiZNP49qW781OwrI0Q8FhDG+p5dj/HiFNYNUY2vfZV9pCnoJVdYRgwwUoTN1/0rSeCEnSHhaBquMJ5nqKNSg8eTardzYtFIwKxU3hbaKNAx8cyygM9lN93pSloZoZtmYDYi/DHpZSk7+3abFTG6LOLaxDtCmCkWYcmBkK9o3/xaFreYc12UcXTQ7MS7AW0SMxvaWGI4TRGbx7VuPTaQ/L9ObQ1bewJdeWVZDtBNAKZe+vbItoLeJDoegIedbh2EvHquRh7Rp9JdPyq7RodRzemY9BwfPuWwgbUpHk2vLIo9Kh+qJRtspl5BANVzKyr26EKgRrNh5Wh+afh6U9gapRseJ6SbrPrWntryfH6yzpPdWCbadDaNGaNgTJDAWzzoVkzy+m953m9Xcvp/KyPcdWyMN5QJNzvh148MbtueNGS1zvFluwOO2+cPJ0y9EoZuE265tthj92f1Uc9HxX7ZBwaJkrT0ME2b62fXJPzePygnyFyHuW99ZPsd9ZpNB0I8S0TpP5R77nqdIPmhGBXEJCFq2GEV7Nsu+nQpPTV2QZD9ghd//Ooqc9xL22rZBrc4Xwdh/gIAcRWLQB0kPjYbcTsZ3uI2yQ3764vpTPFvmdGHAlwVL1AIAsTsvyeFgAAADBAgAACBYAAIIFAAAQrLmgk1APHXYu4b44P6wp37P3pfPWku4vzXlo9HlMSz8pGudZjrFNXCtHnJNdNnHhbXuOffQo+RjGsvH9/QTbn5tT/YJgrTE6R4krOb+y3qCjK5MMEuyrR+M8MXsVE359rvPIEi2ftECM6OjMERvG51uOz13lt0HjdIIRuVeBcVGTRl6T/W44jlU1tqEU4tVe0PoFwQIXxEVPB2vn2fD/t2Psp0TjKWPr5B4G1JVGWqdxThmmYEnmVemxiZt0dEUgkv/p3KakM1foedRq5G/eNF/1C4IFJrKWBx4qZoniDe/pyHba2wLxwuJdEZVpycI6e1wPwaokqA8NQxxLC1S/IFhgYoK/UsbGVKZ4k92ZT9YR+ZkRYR3YNcR+FPPedqzvxkHPP+Zj0Lav+gXBQhFMhGm6UqedeUILTtIhFgOj3wREh9tl637lWb56LKWP/iwf9QuChSKYqJz6icphwEGKipXW7YdgJSvfISWbhmVghGZJy1iHnVn7s3zULwgWiuBIpdqSp6Ge2jfJa/aiEQIA/8yjfFkYffVnZa1fECwUgfNpzE9VvcCDXirsXIyn88hqWMAv8ypfn/1ZWeoXBAtFEAk/WTeMytqb8oQdpgztyilDyVmKxCKgy7eU0NMpG9eStox99melrV8QLBRB7MralUoVlZ2edLEGu0HlPR9SUg/FNV3wPOkb51OdQ/n66s9KW78gWCiCxE/3qMbeku1KFL9DtSn7nMVq1P2YHuAi5wzpFIW486oXaXIh2Kx1oG7ct9KM6xcEC0VwoQHvemrE+ikcZ6xgTY47oHRLceXV2H018DzQq0/HSbbVfU46EdTXDKoNGr/tm3X9gmCBC0/MA0clNFeciVqqnYwKtyU/98SqDqHq0Xh4iWsa4zzQwqiHD9mNqGpca50Wd8reHRGNSsg9M1MHyhS9ilJa0ewn9LB81S8IFrjQkLvSiO1R/+Z83nHd+y0ajxmzR+fvGvtMM34saqaEaSP+2cvaDLnWtpzXJs1uAY5zhqekr6sZUzQ25DoqjjIoWdvkIZrDOdWvtQVzugMAUoM53QEAAIIFAIBgAQAABAsAACBYAAAI1srAr8N16kEc9Ct1TdQS95yH0wv5zE57MLEXWYgzlu2QxsmINTm2C94XpwG4Ekl7EeXQNs7HHqZivro/cJRBLcb+7Xuyb+zTHvpUo8nFI0oh96jpOP9SRFm3E9aPilUernI364dekAJAsFLDyZMj8j+mq0zjqXLDssw5J6vuaAz8/035vUB+s+KrRmNLIuo1OSc+H1fOVl8+27T+35Hv6sn44uR7tWly0Yu+dS5tKZMCjUcZhD1c7Ot2oeeDr9HRYUxx6keUCOvrL8rPDpocBCursLQMgfFFRRraIIY4DGd4rboRJZlhYpRC5MwGq4fVtGh6hn9ZjrMTIbgDo+E3QsRkZIhknPMeyH0opqgfwwjRGkg96Ml2fTQ5CFZa9Gh5PRA5yYj8sPDIbFh9sbCns15Lz5cH1ZsSQqa91pGcY5vCV/yphBx7ZDT4bsx7MpwibAOHmJYc++nTeO78aZ5NWfYxTFE/WiJYxYjP414/gGBFekG6n6Wc0OsoRIRHempevdxUJSIkHJG/idy2p4SQFWl0e5R8+mC+zg2jryYsJKxHeC9xPEntGRVjeIq6rMOmxemK4FQpepBxU4S4Ye0nbv3oTxG0vvUTQLBS9+e0aLzYacVTWKgX+9SLjRYjRKtFs5nrWzc4vaBnnFDVJSYjynfSOS1uYf1SXbmOqiE23QihKNH0ifz0wretDPWjRZiMD4I1Aw9rYDSEtP00LnHoG428G7FfPftkbUbXOrK8D5e3YYd25mDjUohXaW6TlR1rf2Wrv6hO4wHm5pqCLoHtZ/BsktSPLMcBYWFM1sHPAAAADwsAACBYAAAIFgAAQLAAAACCBQCAYAEAAAQLALDm/F+AAQCEklMM79C0zgAAAABJRU5ErkJggg==" width="225" alt="Extra Duty Solutions — A Hart Halsey Company" style="display:block; width:225px; height:auto; border:0; outline:none;">
-      </td>
-      <td valign="middle" align="right" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:16px; color:#5a7599; text-transform:uppercase; letter-spacing:2px; white-space:nowrap;">
-        Invoice&nbsp;Notice
-      </td>
-      </tr>
-      </tbody></table>
-    </td>
-    </tr>
+<!-- Header -->
+<tr>
+<td style="padding:30px 40px;background:#ffffff;border-bottom:4px solid #c9a227;">
 
-    <!-- Gold accent rule -->
-    <tr><td style="background-color:#c9a227; height:4px; line-height:4px; font-size:4px;">&nbsp;</td></tr>
+<h1 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:28px;color:#002b57;">
+Extra Duty Solutions
+</h1>
 
-    <!-- Greeting + invoice block -->
-    <tr>
-    <td style="padding:36px 40px 8px 40px; background-color:#ffffff;">
-      <p style="margin:0 0 16px 0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#33506e;">
-        Dear Valued Customer,
-      </p>
-      <p style="margin:0 0 24px 0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#33506e;">
-        Thank you for partnering with Extra Duty Solutions (EDS) for your extra-duty staffing needs. Your invoice is attached to this email and is also available in the EDS Customer Portal.
-      </p>
-
-      <!-- Invoice number card -->
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eef3f9; border-radius:6px;">
-      <tbody><tr>
-      <td style="padding:18px 24px;">
-        <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:16px; color:#5a7599; text-transform:uppercase; letter-spacing:1.5px;">
-          Invoice Number
-        </p>
-        <p style="margin:2px 0 0 0; font-family:Georgia, 'Times New Roman', serif; font-size:26px; line-height:34px; color:#002b57; font-weight:bold;">
-          #((Document.InvoiceNbr))
-        </p>
-      </td>
-      </tr>
-      </tbody></table>
-    </td>
-    </tr>
-
-    <!-- Bank change alert -->
-    <tr>
-    <td style="padding:24px 40px 8px 40px; background-color:#ffffff;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-left:4px solid #c9a227; background-color:#fdf8ec; border-radius:0 6px 6px 0;">
-      <tbody><tr>
-      <td style="padding:18px 24px;">
-        <p style="margin:0 0 6px 0; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; color:#8a6d1a; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">
-          Important — We Have Changed Banks
-        </p>
-        <p style="margin:0 0 10px 0; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#5c4d18;">
-          Please update your accounts payable records with the new remittance information below before issuing payment. These details also appear on the remittance page of your invoice.
-        </p>
-        <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:20px; color:#5c4d18;">
-          <strong>Your security matters:</strong> if you ever receive an email requesting a change to our banking information, please verify it by calling us at 203-202-3991 before updating your records.
-        </p>
-      </td>
-      </tr>
-      </tbody></table>
-    </td>
-    </tr>
-
-    <!-- HOW TO PAY heading -->
-    <tr>
-    <td style="padding:32px 40px 4px 40px; background-color:#ffffff;">
-      <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:16px; color:#5a7599; text-transform:uppercase; letter-spacing:2px; font-weight:bold; border-bottom:1px solid #d6e0ec; padding-bottom:10px;">
-        How to Pay
-      </p>
-    </td>
-    </tr>
-
-    <!-- Pay by Check -->
-    <tr>
-    <td style="padding:20px 40px 0 40px; background-color:#ffffff;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #d6e0ec; background-color:#f7fafd; border-radius:6px;">
-      <tbody><tr>
-      <td style="padding:20px 24px;">
-        <p style="margin:0 0 10px 0; font-family:Georgia, 'Times New Roman', serif; font-size:17px; line-height:22px; color:#002b57; font-weight:bold;">
-          Pay by Check
-        </p>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tbody><tr>
-          <td width="130" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#5a7599; padding:2px 0;">Payable to</td>
-          <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#002b57; font-weight:bold; padding:2px 0;">Extra Duty Solutions</td>
-        </tr>
-        <tr>
-          <td width="130" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#5a7599; padding:2px 0;">Mail to</td>
-          <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#002b57; padding:2px 0;">
-            Extra Duty Solutions<br>
-            PO Box 604396<br>
-            Charlotte, NC 28260-4396
-          </td>
-        </tr>
-        </tbody></table>
-        <p style="margin:12px 0 0 0; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:20px; color:#5a7599;">
-          Write your invoice number on the check and include the remittance page with your payment.
-        </p>
-      </td>
-      </tr>
-      </tbody></table>
-    </td>
-    </tr>
-
-    <!-- Pay by ACH / Wire -->
-    <tr>
-    <td style="padding:16px 40px 0 40px; background-color:#ffffff;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #d6e0ec; background-color:#f7fafd; border-radius:6px;">
-      <tbody><tr>
-      <td style="padding:20px 24px;">
-        <p style="margin:0 0 10px 0; font-family:Georgia, 'Times New Roman', serif; font-size:17px; line-height:22px; color:#002b57; font-weight:bold;">
-          Pay by ACH or Wire Transfer
-        </p>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tbody><tr>
-          <td width="130" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#5a7599; padding:2px 0;">Bank</td>
-          <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#002b57; padding:2px 0;">Wells Fargo Bank, N.A.</td>
-        </tr>
-        <tr>
-          <td width="130" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#5a7599; padding:2px 0;">Routing Number</td>
-          <td valign="top" style="font-family:'Courier New', Courier, monospace; font-size:14px; line-height:22px; color:#002b57; font-weight:bold; padding:2px 0;">121000248</td>
-        </tr>
-        <tr>
-          <td width="130" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#5a7599; padding:2px 0;">Account Number</td>
-          <td valign="top" style="font-family:'Courier New', Courier, monospace; font-size:14px; line-height:22px; color:#002b57; font-weight:bold; padding:2px 0;">4172588402</td>
-        </tr>
-        <tr>
-          <td width="130" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#5a7599; padding:2px 0;">SWIFT</td>
-          <td valign="top" style="font-family:'Courier New', Courier, monospace; font-size:14px; line-height:22px; color:#002b57; font-weight:bold; padding:2px 0;">WFBIUS6S</td>
-        </tr>
-        </tbody></table>
-        <p style="margin:12px 0 0 0; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:20px; color:#5a7599;">
-          Reference the invoice number(s) you are paying in your payment instructions so we can apply your payment promptly and accurately.
-        </p>
-      </td>
-      </tr>
-      </tbody></table>
-    </td>
-    </tr>
-
-    <!-- Portal CTA -->
-    <tr>
-    <td style="padding:32px 40px 8px 40px; background-color:#ffffff;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#002b57; border-radius:6px;">
-      <tbody><tr>
-      <td style="padding:24px 28px;">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tbody><tr>
-        <td valign="middle">
-          <p style="margin:0 0 4px 0; font-family:Georgia, 'Times New Roman', serif; font-size:17px; line-height:22px; color:#ffffff; font-weight:bold;">
-            EDS Customer Portal
-          </p>
-          <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:20px; color:#a8bdd6;">
-            View invoices, check account status, and manage payments online.
-          </p>
-        </td>
-        <td valign="middle" align="right" width="160">
-          <!--[if mso]>
-          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://portal.extradutysolutions.com/" style="height:42px;v-text-anchor:middle;width:140px;" arcsize="12%" strokecolor="#c9a227" fillcolor="#c9a227">
-          <w:anchorlock/>
-          <center style="color:#002b57;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">Register Now</center>
-          </v:roundrect>
-          <![endif]-->
-          <!--[if !mso]><!-->
-          <a href="https://portal.extradutysolutions.com/" target="_blank" style="display:inline-block; background-color:#c9a227; color:#002b57; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; line-height:42px; text-align:center; text-decoration:none; width:140px; border-radius:5px;">
-            Register Now
-          </a>
-          <!--<![endif]-->
-        </td>
-        </tr>
-        </tbody></table>
-      </td>
-      </tr>
-      </tbody></table>
-    </td>
-    </tr>
-
-    <!-- Sign-off -->
-    <tr>
-    <td style="padding:28px 40px 32px 40px; background-color:#ffffff;">
-      <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#33506e;">
-        Questions about your invoice or payment? We are happy to help.
-      </p>
-      <p style="margin:16px 0 0 0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#33506e;">
-        With appreciation,<br>
-        <span style="font-weight:bold; color:#002b57;">The Customer Care Team</span><br>
-        Extra Duty Solutions
-      </p>
-    </td>
-    </tr>
-
-    <!-- Contact strip -->
-    <tr>
-    <td style="background-color:#eef3f9; padding:24px 40px; border-top:1px solid #d6e0ec;">
-      <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:24px; color:#44608a;">
-        <span style="color:#5a7599;">Email:</span> <a style="color:#002b57; text-decoration:underline;">customerservice@extradutysolutions.com</a><br>
-        <span style="color:#5a7599;">Phone:</span> <span style="color:#002b57;">203-202-3991 (Option 3)</span><br>
-        <span style="color:#5a7599;">Web:</span> <a href="https://www.extradutysolutions.com" target="_blank" style="color:#002b57; text-decoration:underline;">www.extradutysolutions.com</a>
-        &nbsp;&nbsp;·&nbsp;&nbsp;
-        <a href="https://extradutysolutions.com/financial-forms/" target="_blank" style="color:#002b57; text-decoration:underline;">Financial Forms</a>
-      </p>
-    </td>
-    </tr>
-
-  </tbody></table>
-  <!-- /Main container -->
-
-  <!-- Footer / legal on the blue background -->
-  <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:100%;">
-  <tbody><tr>
-  <td style="padding:24px 20px 8px 20px;" align="center">
-    <p style="margin:0 0 6px 0; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:17px; color:#a8bdd6;">
-      You are receiving this email because your organization works with Extra Duty Solutions.<br>
-      Attachments may include an invoice and remittance page.
-    </p>
-    <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:17px; color:#7e97b8;">
-      © 2026 Extra Duty Solutions. All rights reserved.
-    </p>
-  </td>
-  </tr>
-  </tbody></table>
+<p style="margin:5px 0 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#5a7599;letter-spacing:2px;text-transform:uppercase;">
+Invoice Notice
+</p>
 
 </td>
 </tr>
-</tbody></table>
+
+<!-- Greeting -->
+<tr>
+<td style="padding:35px 40px 10px 40px;">
+
+<p style="margin:0 0 20px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#33506e;">
+Dear Valued Customer,
+</p>
+
+<p style="margin:0 0 25px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#33506e;">
+Thank you for partnering with Extra Duty Solutions (EDS) for your extra-duty staffing needs.
+Your invoice is attached to this email and is also available in the EDS Customer Portal.
+</p>
+
+</td>
+</tr>
+
+<!-- Invoice Number -->
+<tr>
+<td style="padding:0 40px 20px 40px;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#eef3f9;border-radius:6px;">
+<tr>
+<td style="padding:20px;">
+
+<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#5a7599;text-transform:uppercase;letter-spacing:1px;">
+Invoice Number
+</div>
+
+<div style="font-family:Georgia,serif;font-size:28px;font-weight:bold;color:#002b57;padding-top:5px;">
+#((Document.InvoiceNbr))
+</div>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<!-- Bank Change -->
+<tr>
+<td style="padding:0 40px 20px 40px;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#fdf8ec;border-left:5px solid #c9a227;">
+<tr>
+<td style="padding:20px;">
+
+<p style="margin:0 0 10px 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#8a6d1a;text-transform:uppercase;">
+Important — We Have Changed Banks
+</p>
+
+<p style="margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#5c4d18;">
+Please update your accounts payable records with the new remittance information below before issuing payment.
+These details also appear on the remittance page of your invoice.
+</p>
+
+<p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px;color:#5c4d18;">
+<strong>Your security matters:</strong>
+If you ever receive an email requesting a change to our banking information,
+please verify it by calling us at 203-202-3991 before updating your records.
+</p>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<!-- How To Pay -->
+<tr>
+<td style="padding:15px 40px;">
+
+<h3 style="font-family:Arial,Helvetica,sans-serif;color:#5a7599;text-transform:uppercase;border-bottom:1px solid #d6e0ec;padding-bottom:10px;margin:0;">
+How To Pay
+</h3>
+
+</td>
+</tr>
+
+<!-- Check Payment -->
+<tr>
+<td style="padding:10px 40px;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #d6e0ec;background:#f7fafd;">
+<tr>
+<td style="padding:20px;">
+
+<h3 style="margin:0 0 15px 0;font-family:Georgia,serif;color:#002b57;">
+Pay by Check
+</h3>
+
+<p style="font-family:Arial,Helvetica,sans-serif;color:#33506e;margin:0;">
+<strong>Payable To:</strong><br>
+Extra Duty Solutions
+</p>
+
+<p style="font-family:Arial,Helvetica,sans-serif;color:#33506e;">
+<strong>Mail To:</strong><br>
+Extra Duty Solutions<br>
+PO Box 604396<br>
+Charlotte, NC 28260-4396
+</p>
+
+<p style="font-family:Arial,Helvetica,sans-serif;color:#5a7599;margin-bottom:0;">
+Write your invoice number on the check and include the remittance page with your payment.
+</p>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<!-- ACH -->
+<tr>
+<td style="padding:10px 40px 25px 40px;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #d6e0ec;background:#f7fafd;">
+<tr>
+<td style="padding:20px;">
+
+<h3 style="margin:0 0 15px 0;font-family:Georgia,serif;color:#002b57;">
+Pay by ACH or Wire Transfer
+</h3>
+
+<p style="font-family:Arial,Helvetica,sans-serif;margin:5px 0;">
+<strong>Bank:</strong> Wells Fargo Bank, N.A.
+</p>
+
+<p style="font-family:Arial,Helvetica,sans-serif;margin:5px 0;">
+<strong>Routing Number:</strong> 121000248
+</p>
+
+<p style="font-family:Arial,Helvetica,sans-serif;margin:5px 0;">
+<strong>Account Number:</strong> 4172588402
+</p>
+
+<p style="font-family:Arial,Helvetica,sans-serif;margin:5px 0;">
+<strong>SWIFT:</strong> WFBIUS6S
+</p>
+
+<p style="font-family:Arial,Helvetica,sans-serif;color:#5a7599;margin-top:15px;">
+Reference the invoice number(s) you are paying in your payment instructions so we can apply your payment promptly and accurately.
+</p>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<!-- Portal -->
+<tr>
+<td style="padding:0 40px 25px 40px;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#002b57;">
+<tr>
+
+<td style="padding:25px;">
+
+<h3 style="margin:0;color:#ffffff;font-family:Georgia,serif;">
+EDS Customer Portal
+</h3>
+
+<p style="margin:10px 0 20px 0;color:#a8bdd6;font-family:Arial,Helvetica,sans-serif;">
+View invoices, check account status, and manage payments online.
+</p>
+
+<a href="https://portal.extradutysolutions.com/"
+   target="_blank"
+   style="background:#c9a227;color:#002b57;padding:12px 20px;text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-weight:bold;border-radius:4px;display:inline-block;">
+Register Now
+</a>
+
+</td>
+
+</tr>
+</table>
+
+</td>
+</tr>
+
+<!-- Closing -->
+<tr>
+<td style="padding:0 40px 35px 40px;">
+
+<p style="font-family:Arial,Helvetica,sans-serif;color:#33506e;">
+Questions about your invoice or payment? We are happy to help.
+</p>
+
+<p style="font-family:Arial,Helvetica,sans-serif;color:#33506e;line-height:24px;">
+With appreciation,<br>
+<strong style="color:#002b57;">The Customer Care Team</strong><br>
+Extra Duty Solutions
+</p>
+
+</td>
+</tr>
+
+<!-- Contact -->
+<tr>
+<td style="background:#eef3f9;padding:25px 40px;">
+
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#44608a;line-height:24px;margin:0;">
+
+<strong>Email:</strong>
+<a href="mailto:customerservice@extradutysolutions.com"
+   style="color:#002b57;">
+customerservice@extradutysolutions.com
+</a>
+
+<br>
+
+<strong>Phone:</strong>
+203-202-3991 (Option 3)
+
+<br>
+
+<strong>Web:</strong>
+<a href="https://www.extradutysolutions.com/"
+   target="_blank"
+   style="color:#002b57;">
+www.extradutysolutions.com
+</a>
+
+&nbsp;&nbsp;|&nbsp;&nbsp;
+
+<a href="https://extradutysolutions.com/financial-forms/"
+   target="_blank"
+   style="color:#002b57;">
+Financial Forms
+</a>
+
+</p>
+
+</td>
+</tr>
+
+</table>
+
+<!-- Footer -->
+
+<table width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;">
+<tr>
+<td align="center" style="padding:25px 15px;">
+
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#a8bdd6;line-height:18px;margin:0 0 8px 0;">
+You are receiving this email because your organization works with Extra Duty Solutions.<br>
+Attachments may include an invoice and remittance page.
+</p>
+
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#7e97b8;margin:0;">
+© 2026 Extra Duty Solutions. All rights reserved.
+</p>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
